@@ -32,3 +32,31 @@
 
 > requirements.txt相比pyproject.toml混合了多余的直接和间接依赖，因此可以利用uv
 
+### 4、关于conda的一些指令
+
+> ```
+> conda activate env_name
+> #激活虚拟环境
+> conda remove --name env_name --all
+> #删除虚拟环境
+> conda remove --name env_name  package_name
+> #删除虚拟环境中某个或者某些包
+> conda env export --name myenv > myenv.yml
+> #获得环境中的所有配置
+> conda env create -f  myenv.yml
+> #重新还原环境
+> conda list
+> #查看当前环境中安装了哪些包
+> conda search package_name
+> #检查当前是否由所需要的包
+> conda install package_name
+> #安装一个包
+> conda install numpy=0.20.3
+> #下载特定版本的包
+> conda update numpy
+> #更新包
+> conda uninstall package_name
+> #卸载包
+> ```
+>
+> 
