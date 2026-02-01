@@ -4,6 +4,15 @@
 
 ## 1、首次提交
 
+```
+cd ~/.ssh
+ls
+cat id_rsa.pub
+#获取ssh密钥
+```
+
+
+
 > 电脑在需要的文件夹中打开git bash
 
 > ```

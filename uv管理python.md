@@ -18,6 +18,9 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 1|uv --version
 #查看uv的版本信息
 
+2|Get-Command uv
+#查看uv位置
+
 2|uv python list
 #查看系统中可用的python脚本
 
@@ -51,6 +54,8 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 ###项目管理依赖
 1|uv add requests
 #添加request库作为项目依赖
+# 阿里云镜像
+uv add matplotlib --index-url https://mirrors.aliyun.com/pypi/simple/
 
 2|uv lock
 #锁定依赖
