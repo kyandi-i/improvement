@@ -517,3 +517,384 @@ t[2][1] = 'Y'
 # print(int2('1000000'))
 ```
 
+## 9.模块
+
+---
+
+`import`
+
+## 10.面向对象编程
+
+---
+
+```
+# 类和实例
+# class Student(object):
+#     def __init__(self,name,score):
+#         self.name = name
+#         self.score = score
+# bart = Student('Bart Simpson',59)
+# print(bart.name)
+#数据封装
+# class Student(object):
+#     def __init__(self, name, score):
+#         self.name = name
+#         self.score = score
+
+#     def print_score(self):
+#         print('%s: %s' % (self.name, self.score))
+# print(bart.print_score())
+
+# 访问限制
+# class Student(object):
+#     def __init__(self, name, score):
+#         self.__name = name
+#         self.__score = score
+#    def get_name(self):
+#        return self.__name
+#    def get_score(self):
+#        return self.__score
+#    def set_score(self, score):
+#        if 0 <= score <= 100:
+#            self.__score = score
+#        else:
+#            raise ValueError('bad score')
+
+# 继承和多态
+# class character(object):
+#     def fun(self):
+#         print('hello my friend')
+
+# class swordman(character):
+#     pass
+
+# swordman = swordman()
+# print(swordman.fun())
+
+# 获取对象信息
+# type()
+# isinstance()
+# dir()
+# class MyObject(object):
+#      def __init__(self):
+#          self.x = 9
+#      def power(self):
+#          return self.x * self.x
+
+# obj = MyObject()
+
+# print(hasattr(obj, 'x'))
+
+# 设置一个属性'y'
+# setattr(obj, 'y', 19) 
+# 获取属性'y'
+# getattr(obj, 'y') 
+# obj.y 
+
+# 实例属性和类属性
+# class Student(object):
+#     name = 'Student' # 类属性
+
+# 面向对象高级编程
+
+# _slots_
+# class students(object):
+#     限制实例的属性
+#     _slots_ = ('name', 'age')
+
+# @property
+# class Screen(object):
+#     @property
+#     def width(self):
+#         return self._width
+#     @width.setter
+#     def width(self, value):
+#         self._width = value
+
+#     @property
+#     def height(self):
+#         return self._height
+
+#     @height.setter
+#     def height(self, value):
+#         self._height = value
+
+#     @property
+#     def resolution(self):
+#         return self._width * self._height
+
+# 测试:
+# s = Screen()
+# s.width = 1024
+# s.height = 768
+# print('resolution =', s.resolution)
+# if s.resolution == 786432:
+#     print('测试通过!')
+# else:
+#     print('测试失败!')
+# 多重继承
+# class Animal(object):
+#     def run(self):
+#         print('Animal is running...')
+# class Dog(Animal):
+#     def run(self):
+#         print('Dog is running...')
+# class Cat(Animal):
+#     def run(self):
+#         print('Cat is running...')
+# class Tortoise(Animal):
+#     def run(self):
+#         print('Tortoise is running slowly...')
+# class Timer(object):
+#     def run(self):
+#         print('Start...')
+# class TimerDog(Dog, Timer):
+#     pass
+# dog = TimerDog()
+# dog.run()
+# print(isinstance(dog, Timer))
+# print(isinstance(dog, Dog))
+
+# 定制类
+# class student(object):
+#     def __init__(self,name):
+#         self.name = name
+#     def __str__(self):
+#         return f'student object (name: {self.name})'
+
+# print(student('Michael'))
+
+# class Fib(object):
+#     def __init__(self):   
+#         self.a, self.b = 0, 1
+#     def __iter__(self):
+#         return self
+#     def __next__(self):
+#         self.a, self.b = self.b, self.a + self.b
+#         if self.a > 100000:
+#             raise StopIteration();
+#         return self.a
+# for n in Fib():
+#     print(n)
+#判断一个对象是否能被调用 callable()
+# print(callable(Fib()))
+
+# 使用枚举类
+# from enum import Enum
+# Month = Enum('Month', ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))
+# for name, member in Month.__members__.items():
+#     print(name, '=>', member, ',', member.value)
+# from enum import Enum, unique
+
+# @unique
+# class Weekday(Enum):
+#     Sun = 0 # Sun的value被设定为0
+#     Mon = 1
+#     Tue = 2
+#     Wed = 3
+#     Thu = 4
+#     Fri = 5
+#     Sat = 6
+# day1 = Weekday.Mon
+# print(day1)
+
+# 使用元类
+#type()
+# metaclass
+```
+
+## 11.测试
+
+---
+
+```
+# 错误、调试与测试
+# 错误处理
+# try:
+# try:
+#     print('try...')
+#     r = 10 / 2
+#     print('result:', r)
+# except ZeroDivisionError as e:
+#     print('except:', e)
+# finally:
+#     print('finally...')
+# print('END')
+# Python的错误其实也是class，所有的错误类型都继承自BaseException。
+# try...except...finally...结构用于捕获错误并处理。
+# import logging
+
+# def foo(s):
+#     return 10 / int(s)
+
+# def bar(s):
+#     return foo(s) * 2
+
+# def main():
+#     try:
+#         bar('0')
+#     except Exception as e:
+#         logging.exception(e)
+
+# main()
+# print('END')
+# logging模块可以输出错误信息到日志，方便事后排查。
+# 调试
+# assert断言
+# def foo(s):
+#     n = int(s)
+#     assert n != 0, 'n is zero!'
+#     return 10 / n
+# def main():
+#     foo('0')
+# logging模块
+# import logging
+# logging.basicConfig(level=logging.INFO)
+# s = '0'
+# n = int(s)
+# logging.info('n = %d' % n)
+# print(10 / n)
+#pdb调试器
+#   python -m pdb err.py
+# (Pdb) n
+# (Pdb) p s
+# '0'
+# (Pdb) p n
+# 0
+# (Pdb) q
+# err.py
+
+# 单元测试
+```
+
+## 12.IO编程
+
+---
+
+```
+# 操作文件和目录
+# import os
+# print(os.name)
+
+# import os
+# 1. 获取存在的环境变量（如PATH）
+# print(os.environ.get('PATH'))  
+# 输出系统PATH的所有路径
+# 2. 获取不存在的环境变量，返回默认值（推荐）
+# print(os.environ.get('XXX', 'default_value'))  
+# 输出'default_value'，避免报错
+
+# 获取当前目录的绝对路径
+
+# import os
+# print(os.path.abspath('.'))
+# print(os.path.abspath('./testdir'))
+
+# 拼接路径
+# import os
+# print(os.path.join('/home/user', 'testdir'))
+
+# 拆分路径
+# import os
+# print(os.path.split('/home/user/testdir/file.txt'))
+
+# 获取文件扩展名
+# import os
+# print(os.path.splitext('/home/user/testdir/file.txt'))
+
+# 列出目录下的所有文件和子目录
+# import os
+# print(os.listdir('.'))
+
+# 创建目录
+# import os
+# 1. 拼接要创建的目录的完整路径（当前目录下创建testdir）
+# new_dir = os.path.join(os.path.abspath('.'), 'testdir')
+# 2. 创建目录
+# os.mkdir(new_dir)
+
+# 删除目录
+# import os
+# os.rmdir(os.path.join(os.path.abspath('.'), 'testdir'))
+
+# 重命名文件或目录
+# import os
+# os.rename('oldname.txt', 'newname.txt')
+
+# 删除文件
+# import os
+# os.remove('unwanted_file.txt')
+
+# 复制文件
+# import shutil
+# 将源文件src复制到目标文件dst，src/dst为文件路径（相对/绝对）
+# shutil.copyfile('source.txt', 'target.txt')
+
+# import os
+# 一行代码过滤：当前目录下的所有.py文件
+# py_file_list = [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1] == '.py']
+# print(py_file_list)  # 输出示例：['main.py', 'test.py', 'utils.py']
+
+# import os
+# import shutil
+
+
+# 1. 拼接test_files目录的绝对路径
+# test_dir = os.path.join(os.path.abspath('.'), 'test_files')
+# 2. 创建目录（递归创建，避免上级目录不存在）
+# os.makedirs(test_dir, exist_ok=True)  # exist_ok=True：目录已存在时不报错
+
+# 3. 在test_dir下创建3个文件
+# files = ['1.txt', '2.py', '3.md']
+# for file in files:
+#     file_path = os.path.join(test_dir, file)
+    # 写入空内容，创建文件
+    # with open(file_path, 'w', encoding='utf-8') as f:
+    #     f.write(f'这是{file}的内容')
+
+# 4. 列出test_dir下的所有.py文件
+# py_files = [x for x in os.listdir(test_dir) if os.path.isfile(os.path.join(test_dir, x)) and os.path.splitext(x)[1] == '.py']
+# print(f'test_files下的.py文件：{py_files}')
+
+# 5. 复制2.py为2_copy.py
+# src_file = os.path.join(test_dir, '2.py')
+# dst_file = os.path.join(test_dir, '2_copy.py')
+# shutil.copyfile(src_file, dst_file)
+# print('文件复制完成')
+
+# 6. 递归删除test_files目录及其所有内容
+# shutil.rmtree(test_dir)
+# print('目录删除完成')
+
+# 序列化
+# import json  
+# d = dict(name='Bob', age=20, score=88)
+# 序列化：Python dict → JSON字符串
+# json_str = json.dumps(d) //json.dump(obj, file, ensure_ascii=True, encoding='utf-8')
+# print(type(json_str))  
+# print(json_str)        
+
+# import json
+# 包含中文的Python对象
+# d = dict(name='张三', age=20, score=95)
+# 写入文件，ensure_ascii=False显示中文，encoding='utf-8'保证编码正确
+# with open('data.json', 'w', encoding='utf-8') as f:
+#     json.dump(d, f, ensure_ascii=False)
+# data.json中内容：{"name": "张三", "age": 20, "score": 95}（直接显示中文，非转义）
+
+# 反序列化：JSON字符串 → Python dict
+# import json
+# 标准的JSON字符串
+# json_str = '{"age": 20, "score": 88, "name": "Bob"}'
+# 反序列化：JSON字符串 → Python dict
+# d = json.loads(json_str)
+# print(type(d))  # 输出：<class 'dict'>
+# print(d)        # 输出：{'age': 20, 'score': 88, 'name': 'Bob'}
+
+# 从JSON文件中反序列化
+# with open('data.json', 'r', encoding='utf-8') as f:
+#     data = json.load(f)
+# print(data)  
+# 输出：{'name': '张三', 'age': 20, 'score': 95}
+```
+
